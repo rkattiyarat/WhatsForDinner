@@ -1,0 +1,92 @@
+{
+  "type": "object",
+  "properties": {
+    "recipe": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "cuisine": {
+              "type": "string"
+            },
+            "servings": {
+              "type": "integer"
+            },
+            "preparationMinutes": {
+              "type": "integer"
+            },
+            "cookingMinutes": {
+              "type": "integer"
+            },
+            "ingredients": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "availableIngredientName": {
+                    "type": ["string", "null"],
+                    "description": "Exact original inventory entry for this ingredient, including any typo; null for an extra ingredient."
+                  },
+                  "quantity": {
+                    "type": "number"
+                  },
+                  "unit": {
+                    "type": "string"
+                  },
+                  "isMissing": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "name",
+                  "availableIngredientName",
+                  "quantity",
+                  "unit",
+                  "isMissing"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "instructions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "name",
+            "description",
+            "cuisine",
+            "servings",
+            "preparationMinutes",
+            "cookingMinutes",
+            "ingredients",
+            "instructions"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "explanation": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "recipe",
+    "explanation"
+  ],
+  "additionalProperties": false
+}
